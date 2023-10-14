@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  stayrai:
+    image: stayrai/reef-pi-monolith:latest
+    container_name: stayrai
+    privileged: true
+    ports:
+      - "80:80"
+      - "8085:8085"
+    volumes:
+      - ./data:/home/ubuntu/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
