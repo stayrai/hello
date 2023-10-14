@@ -20,15 +20,14 @@ sudo usermod -aG docker $(whoami)
 
 # Install Docker Compose
 echo "Installing Docker Compose..."
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+sudo apt install docker-compose
 
 # Clone a public GitHub repository
 git clone https://github.com/stayrai/hello.git
 
 # Create a data folder in the hello directory
 cd hello
-mkdir -p ~/data
+mkdir -p data
 
 
 # Start Docker Compose (assuming you have a docker-compose.yml file in the cloned repository)
