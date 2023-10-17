@@ -6,6 +6,7 @@ services:
     container_name: watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
 
   stayrai:
     image: stayrai/reef-pi-monolith:latest
@@ -20,3 +21,4 @@ services:
       - /etc/localtime:/etc/localtime:ro
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+    restart: always
