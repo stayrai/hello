@@ -17,6 +17,11 @@ rm get-docker.sh
 
 # Add current user to docker group to execute docker without sudo (this may require logout/login to take effect)
 sudo usermod -aG docker $(whoami)
+sudo chown root:docker /var/run/docker.sock
+newgrp docker
+sudo systemctl restart docker
+docker ps 
+# this should not fail
 
 # Install Docker Compose
 echo "Installing Docker Compose..."
