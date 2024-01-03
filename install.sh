@@ -39,4 +39,13 @@ mkdir -p data
 echo "Starting Docker Compose..."
 docker-compose up -d
 
-echo "Done!"
+
+# prevent wpa_supplicant from starting on boot
+sudo systemctl mask wpa_supplicant.service
+sudo mv /sbin/wpa_supplicant /sbin/no_wpa_supplicant
+sudo pkill wpa_supplicant
+
+
+echo "Done! rebooting now"
+
+sudo reboot
