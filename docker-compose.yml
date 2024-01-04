@@ -23,10 +23,12 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
     restart: always
   txwifi:
-    image: stayrai-txwifi/iotwifi
+    image: stayrai/txwifi:latest
     container_name: txwifi
     privileged: true
     volumes:
       - ./wificfg.json:/cfg/wificfg.json
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
     network_mode: "host"
     restart: always
