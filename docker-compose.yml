@@ -23,7 +23,7 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
     restart: always
   txwifi:
-    image: cjimti/iotwifi
+    image: stayrai-txwifi/iotwifi
     container_name: txwifi
     privileged: true
     volumes:
