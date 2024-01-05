@@ -19,6 +19,7 @@ services:
       - ./data:/home/ubuntu/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+      - /etc/ssl/certs:/etc/ssl/certs:ro
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     restart: always
