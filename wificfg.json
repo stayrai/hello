@@ -7,7 +7,7 @@
     "host_apd_cfg": {
        "ip": "192.168.27.1",
        "ssid": "stayrai-home",
-       "wpa_passphrase":"stayrai-home",
+       "wpa_passphrase":"stayraihome",
        "channel": "6"
     },
       "wpa_supplicant_cfg": {
