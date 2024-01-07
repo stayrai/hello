@@ -33,3 +33,14 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
     network_mode: "host"
     restart: always
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: always
+    ports:
+      - "1883:1883" # Default MQTT port
+      - "9001:9001" # Default Websocket port
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log                                    
