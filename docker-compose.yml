@@ -7,8 +7,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
-    depends_on:
-      - mosquitto
   stayrai:
     image: stayrai/reef-pi-monolith:latest
     container_name: stayrai
