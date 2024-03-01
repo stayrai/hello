@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Function to print error message and exit
+error_handler() {
+  echo "Error occurred at line $1."
+  exit 1
+}
+
+# Trap any error and call error_handler function, passing the line number
+trap 'error_handler $LINENO' ERR
+
 # Exit script on any error
 set -e
 
