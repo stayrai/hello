@@ -12,29 +12,12 @@ trap 'error_handler $LINENO' ERR
 # Exit script on any error
 set -e
 
-# Install git
-echo "Installing Git..."
-sudo apt-get update
-sudo apt-get install -y git
-
-
-# Install Docker
-echo "Installing Docker..."
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-rm get-docker.sh
-
-# Add current user to docker group to execute docker without sudo (this may require logout/login to take effect)
-sudo usermod -aG docker $(whoami)
-sudo chown root:docker /var/run/docker.sock
-newgrp docker
-sudo systemctl restart docker
 docker ps 
 # this should not fail
 
 # Install Docker Compose
 echo "Installing Docker Compose..."
-sudo apt install docker-compose
+sudo apt install -y docker-compose
 
 # Clone a public GitHub repository
 git clone https://github.com/stayrai/hello.git

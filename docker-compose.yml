@@ -7,6 +7,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "1"
   stayrai:
     image: stayrai/reef-pi-monolith:latest
     container_name: stayrai
@@ -18,6 +23,10 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - /etc/ssl/certs:/etc/ssl/certs:ro
+      - /usr/bin/vcgencmd:/usr/bin/vcgencmd
+      #vcgencmd dependencies
+      - /lib/aarch64-linux-gnu/libvchiq_arm.so.0:/lib/aarch64-linux-gnu/libvchiq_arm.so.0
+      - /lib/aarch64-linux-gnu/libvcos.so.0:/lib/aarch64-linux-gnu/libvcos.so.0
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     restart: always
@@ -25,6 +34,11 @@ services:
       - mosquitto
       - watchtower
       - txwifi
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "1"
   txwifi:
     image: stayrai/txwifi:latest
     container_name: txwifi
@@ -37,6 +51,11 @@ services:
     restart: always
     depends_on:
       - watchtower
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "1"
   mosquitto:
     image: eclipse-mosquitto:latest
     container_name: mosquitto
@@ -51,3 +70,8 @@ services:
     depends_on:
       - watchtower
       - txwifi
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "1"
